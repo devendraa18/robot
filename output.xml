@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170911 16:45:34.493" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\acharyad\NLT_Automation\NLT_Robot_Framework\acceptance\tests\ordering\Schedule1.robot" id="s1" name="Schedule1">
+<test id="s1-t1" name="Provide Schedule1-ResidentialEndUser Connection">
+<kw type="setup" name="Open SWP" library="Common">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SWP_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${ALIAS}</arg>
+</arguments>
+<msg timestamp="20170911 16:45:35.343" level="INFO">Opening browser 'gc' to base url 'http://indlin4673:8082/login'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170911 16:45:35.359" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170911 16:45:35.359" starttime="20170911 16:45:35.354"></status>
+</kw>
+<msg timestamp="20170911 16:45:35.359" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170911 16:45:35.362" level="FAIL">WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+</msg>
+<status status="FAIL" endtime="20170911 16:45:35.362" starttime="20170911 16:45:35.343"></status>
+</kw>
+<status status="FAIL" endtime="20170911 16:45:35.362" starttime="20170911 16:45:35.342"></status>
+</kw>
+<kw type="teardown" name="Close SWP" library="Common">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170911 16:45:35.363" starttime="20170911 16:45:35.363"></status>
+</kw>
+<status status="PASS" endtime="20170911 16:45:35.363" starttime="20170911 16:45:35.362"></status>
+</kw>
+<status status="FAIL" endtime="20170911 16:45:35.363" critical="yes" starttime="20170911 16:45:35.341">Setup failed:
+WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+</status>
+</test>
+<doc>Schedule#1 Test Cases</doc>
+<status status="FAIL" endtime="20170911 16:45:35.364" starttime="20170911 16:45:34.497"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Schedule1" pass="0">Schedule1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20170911 16:45:35.105" level="ERROR">Error in file 'C:\Users\acharyad\NLT_Automation\NLT_Robot_Framework\acceptance\Resources\Common.robot': Non-existing setting 'Suite Setup'.</msg>
+<msg timestamp="20170911 16:45:35.359" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+</errors>
+</robot>
