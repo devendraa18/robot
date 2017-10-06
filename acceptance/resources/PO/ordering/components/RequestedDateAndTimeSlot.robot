@@ -153,17 +153,17 @@ Verify 'Reserve' button is visible, clickable and message
 # Verify 'Reserve button' get enabled, once time changed in dropdown   
    
 Verify date should populate using calendar icon
-    #Click Element    ${requested_date_of_activation_datepicker}
-    #sleep    5s
-    #Click Element    ${requested_date_selection}
+    # Click Element    ${requested_date_of_activation_datepicker}
+    # sleep    5s
+    # Click Element    ${requested_date_selection}
     Select enabled activation date from calendar
     
 
 Verify sch2 date should populate using calendar icon
-    Click Element    ${requested_date_of_activation_datepicker}
-    sleep    5s
-    Click Element    ${sch2_requested_date_selection}    
-
+    # Click Element    ${requested_date_of_activation_datepicker}
+    # sleep    5s
+    # Click Element    ${sch2_requested_date_selection}    
+    Select enabled activation date from calendar
     
 Verify Provide 'Preferred Installation Session' label and is read only    
     Verify Provide 'Preferred Installation session' label
@@ -284,28 +284,24 @@ Verify 'Preferred Installation session' is read only
      
 Select enabled activation date from calendar
     Click Element    ${requested_date_of_activation_datepicker} 
-    sleep    2s   
-    @{list_elements}=    Get Webelements    ${requested_date_of_activation_enabled_dates}
-    ${ele_attribute}=    Create List
-    :FOR    ${element}    IN    ${list_elements}
-    \    ${name}=    Get Element Attribute    ${element}@aria-label
-    \    Append To List    ${ele_attribute}    ${name}
-    \    Log    ${name}
-    Should be True    ${ele_attribute}>0
-    ${first_ele}=    Get value from list    ${ele_attribute}
-    Run Keyword If   ${ele_attribute}>0    Click first list element    ${first_ele}    ELSE    Click on next month button
-    Click first list element    ${first_ele}
+    ${count}    Get Matching Xpath Count    //div[@class='DayPicker-Week']/div[@aria-disabled='false']
+    # ${count}=    Set Variable    31
+    ${count_int}    Convert To Integer    ${count}
+    Run Keyword If    ${count_int}>0    Iterate through enabled dates in calendar and select    ${count_int}    ELSE    Click on next month button
+    Iterate through enabled dates in calendar and select    ${count_int}
     
+Iterate through enabled dates in calendar and select
+    [Arguments]    ${counter}
+    :FOR    ${i}    IN RANGE    0    ${counter}
+    \    ${element}=    Catenate    SEPARATOR=,    //div[@class='DayPicker-Week']/div[@aria-disabled='false' and contains(@aria-label    '${i}')]
+    \    ${result}=    Run Keyword And Return Status    Element Should Be Visible    ${element}    
+    \    Run Keyword If    ${result}==True    Click Element    ${element}
+    \    Exit For Loop If    ${result}==True
     
-Get value from list
-    [Arguments]    @{list}
-    ${list_value}=    Get From List    ${list}    0
-    [return]    ${list_value}
-    
-Click first list element
-    [Arguments]    ${first_webelemet}
-    #${first_webelemet}    Get value from list    ${list}    ${index}
-    Click Element    ${first_webelemet}
+# Click first list element
+    # [Arguments]    ${first_webelemet}
+    # #${first_webelemet}    Get value from list    ${list}    ${index}
+    # Click Element    ${first_webelemet}
     
 Click on next month button
     Click Element    ${calendar_next_month_button}

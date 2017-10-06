@@ -40,13 +40,13 @@ Provide Schedule2-NonResidentialEndUser Connection
     # Provide Schedule2-ResidentialEndUser Connection    ${data_set}
 
 
-Provide Schedule2-NonResidentialEndUser Connection order submit
-    [Tags]    onlysch
-    #Set Global Variable    ${captured_ori_value}
-    @{data_set_list}=    Get Excel Data    ${residential_provide_view_data_sheet}
-    :FOR    ${data_set}    IN    @{data_set_list} 
-    \    Log    ${data_set}
-    \    Provide Schedule2-NonResidentialEndUser Connection order submit    ${data_set}
+# Provide Schedule2-NonResidentialEndUser Connection order submit
+    # [Tags]    onlysch
+    # #Set Global Variable    ${captured_ori_value}
+    # @{data_set_list}=    Get Excel Data    ${residential_provide_view_data_sheet}
+    # :FOR    ${data_set}    IN    @{data_set_list} 
+    # \    Log    ${data_set}
+    # \    Provide Schedule2-NonResidentialEndUser Connection order submit    ${data_set}
 
 View Schedule2-NonResidentialEndUser Connection
     [Tags]    sanity
